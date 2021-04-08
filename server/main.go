@@ -47,7 +47,9 @@ func readMsg(socket tcpSocket.TcpSocket) {
 		}
 		msgOut:=name+": "+string(msg)
 		for _,item:=range tcpSocket.SocketList{
-			item.WriteMsg([]byte(msgOut))
+			if item!=socket{
+				item.WriteMsg([]byte(msgOut))
+			}
 		}
 	}
 }
