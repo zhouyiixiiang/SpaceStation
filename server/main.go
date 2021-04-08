@@ -6,7 +6,6 @@ import (
 	"strings"
 	"tcpsocket"
 )
-var  SocketList []tcpSocket.TcpSocket
 
 func main() {
 	var socket tcpSocket.TcpSocket
@@ -30,7 +29,7 @@ func main() {
 		}
 		tmpsocket.Conn = conn
 		tmpsocket.ChanMsg = make(chan []byte, 100)
-		SocketList=append(SocketList,tmpsocket )
+		tcpSocket.SocketList=append(tcpSocket.SocketList,tmpsocket )
 		go tmpsocket.ReadMsg()
 		go readMsg(tmpsocket)
 	}
@@ -47,7 +46,7 @@ func readMsg(socket tcpSocket.TcpSocket) {
 			name=msgString[idx+5:]
 		}
 		msgOut:=name+": "+string(msg)
-		for _,item:=range SocketList{
+		for _,item:=range tcpSocket.SocketList{
 			item.WriteMsg([]byte(msgOut))
 		}
 	}

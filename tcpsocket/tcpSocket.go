@@ -12,9 +12,19 @@ type TcpSocket struct {
 	ChanMsg chan []byte
 	Conn    net.Conn
 }
+var  SocketList []TcpSocket
 
+func (item *TcpSocket) connClose() {
+	item.Conn.Close()
+	for i,skt:=range SocketList{
+		if *item==skt{
+			SocketList = append(SocketList[:i],SocketList[i+1:]... )
+		}
+	}
+	fmt.Println("len SocketList: ",len(SocketList))
+}
 func (item *TcpSocket) ReadMsg() {
-	defer item.Conn.Close()
+	defer item.connClose()
 	for {
 		bufferHead := make([]byte, 8)
 		n, err := item.Conn.Read(bufferHead)

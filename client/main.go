@@ -8,7 +8,8 @@ import (
 )
 
 func main() {
-	addr, err := net.ResolveTCPAddr("tcp4", "127.0.0.1:8848")
+	addr, err := net.ResolveTCPAddr("tcp4", "104.168.174.201:8848")
+	//addr, err := net.ResolveTCPAddr("tcp4", "127.0.0.1:8848")
 	if err != nil {
 		panic(err)
 	}
