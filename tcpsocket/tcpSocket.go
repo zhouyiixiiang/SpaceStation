@@ -36,8 +36,11 @@ func (item *TcpSocket) ReadMsg() {
 func (item *TcpSocket) WriteMsg(msg []byte) {
 	length := len(msg)
 	btsLen := item.IntToBytes(length)
-	item.Conn.Write(btsLen)
-	item.Conn.Write(msg)
+	_,err:=item.Conn.Write(btsLen)
+	_,err=item.Conn.Write(msg)
+	if err !=nil{
+		fmt.Println("item.Conn.Write(msg) err ",err)
+	}
 }
 func (item *TcpSocket) BytesToInt(bts []byte) int {
 	byteBuffer := bytes.NewBuffer(bts)

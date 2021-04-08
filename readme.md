@@ -444,3 +444,7 @@ https://blog.csdn.net/zhjinw/article/details/79628632
 cgo:
 
 https://blog.csdn.net/u010884123/article/details/60872980
+
+# vs2010
+
+$(SolutionDir)$(Configuration)\
