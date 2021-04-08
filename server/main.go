@@ -13,9 +13,9 @@ func main() {
 	if err != nil {
 		fmt.Println("conn err")
 	}
-	addr := ip.String() + ":8848"
-	//ip.String()
-	//addr := "127.0.0.1:8848"
+	//addr := ip.String() + ":8848"
+	ip.String()
+	addr := "127.0.0.1:8848"
 	server, err := net.Listen("tcp", addr)
 	if err != nil {
 		panic(err)
